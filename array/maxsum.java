@@ -1,5 +1,4 @@
 package DSA;
-import java.util.*;
 class maxsum {
     public int maxSubArray(int[] nums) {
         int maxsum=Integer.MIN_VALUE;

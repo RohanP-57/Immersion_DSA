@@ -1,27 +1,40 @@
 package DSA.twoDarray;
+
 import java.util.ArrayList;
 import java.util.Scanner;
+
 public class twoDarraylist {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        ArrayList<ArrayList<Integer>> twoDList = new ArrayList<>();
-        System.out.print("Enter the number of rows: ");
-        int rows = scanner.nextInt();
-        for (int i = 0; i < rows; i++) {
-            System.out.print("Enter the number of elements in row " + (i + 1) + ": ");
-            int cols = scanner.nextInt();
-            ArrayList<Integer> row = new ArrayList<>();
-            System.out.println("Enter " + cols + " elements for row " + (i + 1) + ":");
-            for (int j = 0; j < cols; j++) {
-                row.add(scanner.nextInt());
+        Scanner sc = new Scanner(System.in);
+        boolean flag = true;
+        System.out.println("Row:");
+        int row = sc.nextInt();
+        System.out.println("Col:");
+        int col = sc.nextInt();
+        ArrayList<ArrayList<Integer>> arr = new ArrayList<>();
+        System.out.println("Input array:");
+        for (int i = 0; i < row; i++) {
+            ArrayList<Integer> temp = new ArrayList<>();
+            for (int j = 0; j < col; j++) {
+                temp.add(sc.nextInt());
             }
-            twoDList.add(row);
+            arr.add(temp);
         }
-        System.out.println("The 2D ArrayList is:");
-        for(int i = 0; i < twoDList.size(); i++) {
-            ArrayList<Integer> row = twoDList.get(i);
-            System.out.println(row);
+        System.out.println("Target input:");
+        int target = sc.nextInt();
+
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                if (arr.get(i).get(j) == target) {
+                    System.out.println("Found at: " + i + " " + j);
+                    flag = false;
+                    break;
+                }
+            }
+            if (!flag) break;
         }
-        scanner.close();
+        if (flag) {
+            System.out.println("Not Found");
+        }
     }
 }
